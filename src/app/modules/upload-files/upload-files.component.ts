@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
+import { Upload } from 'src/app/entities/upload';
 
 @Component({
   selector: 'app-upload-files',
@@ -9,22 +10,26 @@ import { DashboardService } from '../dashboard.service';
 export class UploadFilesComponent implements OnInit {
   data:any;
   file:any;
+  tabCadres=['1','2'];
+  up:Upload;
+  c:Object=new Object({tableauCadre:this.tabCadres});
   constructor(private Myservice:DashboardService) { }
 
   ngOnInit() {
   }
   upload(event) {
     this.file = event.target.files[0];
-    /*  this.body = {
-      fileName: this.file
-    }
-    console.log(this.body.fileName); */
-    this.data = new FormData();
+    this.data=new FormData();
     this.data.append('file', this.file);
-    console.log(this.data);
   }
   onSubmit(){
     this.Myservice.uploadFiles(this.data).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  sauvegarde(){
+    this.Myservice.sauvegarde(this.c).subscribe(data => {
       console.log(data);
     });
   }

@@ -11,6 +11,9 @@ import { Pays_destination } from 'src/app/entities/pays_destination';
 import { Direction_centrale } from 'src/app/entities/direction_centrale';
 import { cadreINS } from 'src/app/entities/cadreINS';
 import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
+import { Historique } from 'src/app/entities/historique';
+import { isNumber } from 'util';
+import { ArrayType } from '@angular/compiler';
 
 export interface PeriodicElement {
  
@@ -44,7 +47,6 @@ cadreINS2=[];
 cadreINS3=[];
 cadreINS4=[];
 cadreINS5=[];
-//idSelect=0;
 id="0";
 fonction1:string;
 fonction2:string;
@@ -69,6 +71,12 @@ cadre_participe=[];
 Now:number= new Date().getFullYear();
 Year1:number= new Date().getFullYear()-1;
 Year2:number= new Date().getFullYear()-2;
+annee1=[];
+annee2=[];
+annee3=[];
+annee4=[];
+annee5=[];
+nbr:any;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {    
@@ -78,7 +86,7 @@ Year2:number= new Date().getFullYear()-2;
       this.getAllOrganismesEtrangers();
       this.getAllProgrammes();
       this.getDossier();
-      
+      this.dossier.annee=this.Now.toString();
     }
     
     else{
@@ -90,8 +98,9 @@ Year2:number= new Date().getFullYear()-2;
     this.dossier.organisme_etranger_libelle="";
     this.dossier.programme_libelle="";
     this.dossier.ville="";
-    this.dossier.annee=2020;
+    this.dossier.annee=this.Now.toString();
     this.dossier.type_visite=this.Myservice.typeVisite;
+    console.log(this.dossier.type_visite);
     this.dossier.frais_transport=false;
     this.dossier.frais_residence=false;
     this.fonction1="";
@@ -144,6 +153,7 @@ getCadreParDirection(event : any){
           cadres.push(data[key]);
       }
     }
+
     switch(this.id){
       case "1" : this.cadre1 = cadres;
                  break;
@@ -158,11 +168,35 @@ getCadreParDirection(event : any){
     } 
   });
 }
+count(cadreID:any,annee1:any){
+  let h=new Historique();
+  h.annee=this.Year2.toString();
+  h.cadre_id=cadreID;
+  this.Myservice.count(h).subscribe((data:any)=>{
+    console.log(data);
+    error => console.log(error);
+    annee1.push(data);
+  });
+  h.annee=this.Year1.toString();
+  h.cadre_id=cadreID;
+  this.Myservice.count(h).subscribe((data:any)=>{
+    console.log(data);
+    error => console.log(error);
+    annee1.push(data);
+  });
+  h.annee=this.Now.toString();
+  h.cadre_id=cadreID;
+  this.Myservice.count(h).subscribe((data:any)=>{
+    console.log(data);
+    error => console.log(error);
+    annee1.push(data);
+  });
+}
 getCadre(event: any){
   let id = event.target.id;
+  let cadreID=event.target.value;
   let cadre = [];
   let cadreins = [];
-  //if(id == this.id){
     switch(id){
       case "1" : cadreins = this.cadre1;
                  break;
@@ -182,14 +216,19 @@ getCadre(event: any){
           cadre.push(cadreins[i].grade);
           switch(id){
             case "1" : this.cadreINS1 = cadre;
+                        this.count(cadreID,this.annee1);
                        break;
             case "2" : this.cadreINS2 = cadre;
+                        this.count(cadreID,this.annee2);
                        break;
             case "3" : this.cadreINS3 = cadre;
+                        this.count(cadreID,this.annee3);
                        break;
             case "4" : this.cadreINS4 = cadre;
+                        this.count(cadreID,this.annee4);
                        break;
             case "5" : this.cadreINS5 = cadre;
+                      this.count(cadreID,this.annee5);
                        break;           
           } 
          //this.idSelect = cadreins[i].id;

@@ -17,4 +17,7 @@ export class JwtService {
   public get loggedIn(): boolean{
     return localStorage.getItem('token') !==  null;
   }
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
 }

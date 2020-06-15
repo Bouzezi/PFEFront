@@ -185,11 +185,11 @@
                           </option> 
                         </select>
                       </td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control" name="fonction1" [(ngModel)]="fonction1" [value]="cadreINS1[1]" ></td>
-                      <td><input type="text" class="form-control" name="grade1" [(ngModel)]="grade1" [value]="cadreINS1[2]" ></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[0] ? annee1[0] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[1] ? annee1[1] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee1[2] ? annee1[2] : '0' "></td>
+                      <td><input type="text" class="form-control" readonly name="fonction1" [(ngModel)]="fonction1" [value]="cadreINS1[1]" ></td>
+                      <td><input type="text" class="form-control" readonly name="grade1" [(ngModel)]="grade1" [value]="cadreINS1[2]" ></td>
                       <td>
                         <select class="form-control" id="1"  name="cadreINS1" (change)="getCadre($event)">
                           <option value="" [disabled]="true">selectionner un cadre</option>
@@ -208,11 +208,11 @@
                           </option> 
                         </select>
                       </td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"  name="fonction2" [(ngModel)]="fonction2" [value]="cadreINS2[1]"></td>
-                      <td><input type="text" class="form-control" name="grade2" [(ngModel)]="grade2" [value]="cadreINS2[2]"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[0] ? annee2[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[1] ? annee2[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee2[2] ? annee2[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly  name="fonction2" [(ngModel)]="fonction2" [value]="cadreINS2[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade2" [(ngModel)]="grade2" [value]="cadreINS2[2]"></td>
                       <td>
                         <select class="form-control" id="2"   name="cadreINS2" (change)="getCadre($event)">
                           <option value="" [disabled]="true">selectionner un cadre</option>
@@ -231,11 +231,11 @@
                           </option> 
                         </select>
                       </td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control" name="fonction3" [(ngModel)]="fonction3" [value]="cadreINS3[1]"></td>
-                      <td><input type="text" class="form-control" name="grade3" [(ngModel)]="grade3" [value]="cadreINS3[2]"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[0] ? annee3[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[1] ? annee3[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee3[2] ? annee3[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction3" [(ngModel)]="fonction3" [value]="cadreINS3[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade3" [(ngModel)]="grade3" [value]="cadreINS3[2]"></td>
                       <td>
                         <select class="form-control" id="3"   name="cadreINS3" (change)="getCadre($event)">
                           <option value="" [disabled]="true">selectionner un cadre</option>
@@ -254,11 +254,11 @@
                           </option> 
                         </select>
                       </td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control" name="fonction4" [(ngModel)]="fonction4" [value]="cadreINS4[1]"></td>
-                      <td><input type="text" class="form-control" name="grade4" [(ngModel)]="grade4" [value]="cadreINS4[2]"></td>
+                      <td><input type="text" class="form-control" readonly  [value]="annee4[0] ? annee4[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee4[1] ? annee4[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee4[2] ? annee4[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction4" [(ngModel)]="fonction4" [value]="cadreINS4[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade4" [(ngModel)]="grade4" [value]="cadreINS4[2]"></td>
                       <td>
                         <select class="form-control" id="4"   name="cadreINS4" (change)="getCadre($event)">
                           <option value="" [disabled]="true">selectionner un cadre</option>
@@ -277,11 +277,11 @@
                           </option> 
                         </select>
                       </td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control"></td>
-                      <td><input type="text" class="form-control" name="fonction5" [(ngModel)]="fonction5" [value]="cadreINS5[1]"></td>
-                      <td><input type="text" class="form-control" name="grade5" [(ngModel)]="grade5" [value]="cadreINS5[2]"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[0] ? annee5[0] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[1] ? annee5[1] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly [value]="annee5[2] ? annee5[2] : '0'"></td>
+                      <td><input type="text" class="form-control" readonly name="fonction5" [(ngModel)]="fonction5" [value]="cadreINS5[1]"></td>
+                      <td><input type="text" class="form-control" readonly name="grade5" [(ngModel)]="grade5" [value]="cadreINS5[2]"></td>
                       <td>
                         <select class="form-control" id="5"   name="cadreINS5" (change)="getCadre($event)">
                           <option value="" [disabled]="true">selectionner un cadre</option>

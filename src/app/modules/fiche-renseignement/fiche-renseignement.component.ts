@@ -154,5 +154,50 @@ export class FicheRenseignementComponent implements OnInit {
           .save()
     }
 
+    change1(){
+      if(this.frais_trans_no){
+        this.frais_trans_yes = false;
+        this.frais_trans_no = false;
+        }
+    else{
+        this.frais_trans_yes = false;
+        this.frais_trans_no = true;
+    }
+   
+      }
+      change2(){
+        if(this.frais_trans_yes){
+            this.frais_trans_yes = false;
+            this.frais_trans_no = false;
+        }
+        else{
+            this.frais_trans_yes = true;
+            this.frais_trans_no = false;
+        }
+      }
+      
+      change3(){
+        if(this.frais_res_no){
+          this.frais_res_yes = false;
+          this.frais_res_no = false;
+          }
+      else{
+          this.frais_res_yes = false;
+          this.frais_res_no = true;
+      }
+     
+        }
+        change4(){
+          if(this.frais_res_yes){
+              this.frais_res_yes = false;
+              this.frais_res_no = false;
+          }
+          else{
+              this.frais_res_yes = true;
+              this.frais_res_no = false;
+          }
+        }
+
+
 }
  

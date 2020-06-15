@@ -13,6 +13,7 @@ export class TableauSuiviComponent implements OnInit {
   suivi:TableauSuivi;
   cadres=[];
   tab=[];
+  frais="INS";
   fileName= 'TableauSuivi.xlsx';  
   constructor(private router:Router,private Myservice:DashboardService) { }
 
@@ -45,6 +46,10 @@ export class TableauSuiviComponent implements OnInit {
             this.suivi.date_envoie_rapport=data[key].date_envoie_rapport;
             this.suivi.frais_residence=data[key].frais_residence;
             this.suivi.frais_transport=data[key].frais_transport;
+            if(this.suivi.frais_residence == true && this.suivi.frais_transport == true)
+              this.frais=this.suivi.organisme_etranger_lib;
+            if(this.suivi.frais_residence == true && this.suivi.frais_transport == false || this.suivi.frais_residence == false && this.suivi.frais_transport == true )
+              this.frais=this.frais+" / "+this.suivi.organisme_etranger_lib;
             this.tab.push(this.suivi);
           }
         }

@@ -12,7 +12,8 @@
       <form class="form">
         
               <div class="date-f"  >
-                 <input type="date" class="form-control" [(ngModel)]="fiche.date" name="date">
+                 <input type="date"  [(ngModel)]="fiche.date" name="date">
+                 <label>تونس في</label>
                 </div>
 
       
@@ -92,16 +93,16 @@
                  </tr>
 
                  <tr>   
-                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_no" name="trans_no">  لا</td>
-                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_yes" name="trans_yes"> نعم</td>
-                 <td><h4 class="sujet">  مصاريف <span style="margin: 3px;"></span>النقل </h4> 
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_no" name="frais_trans_no"   (click) = "change1()">  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_trans_yes" name="frais_trans_yes"   (click) = "change2()"> نعم</td>
+                 <td><h4 class="sujet">  مصاريف النقل </h4> 
                  </td> 
                 </tr>
 
                 <tr>
-                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_no" name="res_no">  لا</td>
-                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_yes" name="res_yes"> نعم</td>
-                 <td> <h4 class="sujet" >      مصاريف <span style="margin: 3px;"></span>الإقامة  </h4> 
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_no" name="frais_res_no"  (click) = "change3()" >  لا</td>
+                  <td>  <input type="checkbox" class="check" [(ngModel)]="frais_res_yes" name="frais_res_yes"  (click) = "change4()"> نعم</td>
+                 <td> <h4 class="sujet" >      مصاريف الإقامة  </h4> 
                  </td> 
                 </tr>
               </table>
@@ -109,35 +110,45 @@
               <table class="table table-bordered">
                 <tr>
                   
-                  <td> <input  type="text" class="d"  lang="ar" dir="rtl" [(ngModel)]="fiche.autre_frais" name="autre_frais" ></td>
+                  <td> <textarea type="text" class="d"  lang="ar" dir="rtl" [(ngModel)]="fiche.autre_frais" name="autre_frais" >
+                    </textarea>
+                  </td>
                 
-                  <h4>بيان فحوى المصاريف الأخرى والجهة المتحملة <span style="margin: 3px;"></span>لها </h4>
-                  
+                  <h4>  بيان فحوى المصاريف الأخرى والجهة المتحملة لها </h4>
+  
                 </tr>
               </table>
               
-              <h4 style="float: right;">  معطيات خصوصية حول <span style="margin: 3px;"></span>المأمورية   <span>.IV </span> </h4>
-              <table class="table-tabrir">
+              <h4 style="float: right;">  معطيات خصوصية حول المأمورية   .IV </h4>
+              <table class="table table-bordered">
                 <tr>
-                  <td colspan="2"><h5>  : تبرير المأمورية و النتائج المنتظرة من القيام بها </h5></td>
+                  <td>
+                    <input class="form-control col-sm-5" type="text" [(ngModel)]="fiche.objectif_visite" name="objectif_visite"  lang="ar" dir="rtl"  ></td>
+                  <td >
+                    <h4>  : تبرير المأمورية و النتائج المنتظرة من القيام بها </h4>
+                  </td>
+                  
                 </tr>
                 <tr>
-                  <td colspan="2"><input class="input-tabrir" type="text" [(ngModel)]="fiche.objectif_visite" name="objectif_visite"  lang="ar" dir="rtl"  ></td>
-                </tr>
-                <tr>
-                  <td colspan="2"><h5>: إبراز العلاقة بين مشمولات المكلف بالمأموية و موضوعها</h5></td>
-                </tr>
-                <tr>
-                  <td colspan="2"><input class="input-tabrir" type="text" [(ngModel)]="fiche.relation_participant_visite" name="relation_participant_visite"  lang="ar" dir="rtl"  ></td>
+                  <td>
+                    <input class="form-control" type="text" [(ngModel)]="fiche.relation_participant_visite" name="relation_participant_visite"  lang="ar" dir="rtl"  ></td>
+                  <td>
+                    <h4>: إبراز العلاقة بين مشمولات المكلف بالمأموية و موضوعها</h4></td>
+               
+                 
                 </tr>
                 
                 <tr>
-                  <td><input  type="text" [(ngModel)]="fiche.derniere_visite" name="derniere_visite"  lang="ar" dir="rtl"  ></td>
-                  <td><h5>: موضوع المأمورية السابقة</h5></td>
+                  <td>
+                    <input  class="form-control" type="text" [(ngModel)]="fiche.derniere_visite" name="derniere_visite"  lang="ar" dir="rtl"  ></td>
+                  <td>
+                    <h4>: موضوع المأمورية السابقة</h4></td>
                 </tr>
                 <tr>
-                  <td><input  type="date" [(ngModel)]="fiche.date_envoie_rapport" name="date_envoie_rapport"  lang="ar" dir="rtl"  ></td>
-                  <td><h5>: تاريخ إرسال التقارير</h5></td>
+                  <td>
+                    <input class="form-control"  type="date" [(ngModel)]="fiche.date_envoie_rapport" name="date_envoie_rapport"  lang="ar" dir="rtl"  ></td>
+                  <td>
+                    <h4>: تاريخ إرسال التقارير</h4></td>
                 </tr>
               </table> 
              

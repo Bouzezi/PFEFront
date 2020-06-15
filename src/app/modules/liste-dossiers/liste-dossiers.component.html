@@ -21,6 +21,7 @@
                     <th>Sujet</th>
                     <th>Date début</th>
                     <th>Date fin</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -32,9 +33,15 @@
                     <td>{{ dossier.sujet }}</td>
                     <td>{{ dossier.date_deb }}</td>
                     <td>{{ dossier.date_fin}}</td>
+                    <td >
+                        <select class="form-control col-sm-8" style="width: 150px;" id="type"  [(ngModel)]="dossier.statut" name="statut" (change)="changeStatut()">
+                              <option  value="En-cours">En-cours</option>
+                              <option  value="Finalise">Finalisé</option>
+                              <option  value="Annule">Annulé</option>
+                        </select>
+                    </td>
                     <td>
                         <button (click)="edit($event)" class="btn btn-primary" [value]="dossier.id" >view</button>
-                        <button (click)="delete()" class="btn btn-danger">delete</button>
                     </td>
                 </tr>
                 </tbody>

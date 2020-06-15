@@ -10,7 +10,7 @@ export class Dossier{
     nature:string;
     statut:string;
     langues:string;
-    annee :number;
+    annee :string;
     type_visite:string;
     nbr_participant_ins:number;
     nbr_participant_sp:number;

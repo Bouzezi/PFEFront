@@ -13,6 +13,7 @@ export class NotemissionComponent implements OnInit {
 note:Note=new Note();
 sujet:string;
 dossier:Dossier=new Dossier();
+titre:any="";
   constructor(private route:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -22,6 +23,10 @@ dossier:Dossier=new Dossier();
       console.log(this.dossier.id);
       error => console.log(error);
       this.sujet=this.dossier.sujet;
+      if(this.Myservice.typeVisite == "mission")
+      this.titre= " إلى السيد وزير التنمية والإستثمار والتعاون الدولي";
+      else
+      this.titre= "الإدارة المركزية";
       this.note.dossier_id=this.dossier.id; 
       console.log(this.note.dossier_id);  
       this.getNote(this.note.dossier_id);  

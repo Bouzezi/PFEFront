@@ -56,5 +56,9 @@ export class ListeDossiersComponent implements OnInit {
       this.Myservice.id_dossier=element.target.value;
       this.router.navigateByUrl('/dashboard/dossiervisite');
     }
-
+    changeStatut(){
+      let body = {
+        "statut": ""
+    };
+    }
 }

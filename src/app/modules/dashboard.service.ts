@@ -3,11 +3,13 @@ import { Observable} from 'rxjs';
 import { BehaviorSubject} from 'rxjs';
 import { Dossier } from '../entities/dossier';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Note } from '../entities/note';
 import { Fiche } from '../entities/fiche_renseignement';
 import { Bordereau } from '../entities/bordereau';
 import { cadreINS } from '../entities/cadreINS';
+import { Historique } from '../entities/historique';
+import { Upload } from '../entities/upload';
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +20,17 @@ myDossier=this.dossier.asObservable();
 id_dossier:any;
 id_cadre:any;
 typeVisite:string; 
-
 constructor(private http:HttpClient) {};
+
   setDossier(dossier:Dossier){
     this.dossier.next(dossier);
   }
-  
   createDossier(dossier: Dossier):Observable<object>{
     return this.http.post('http://localhost:8000/dossiervisite/new',dossier);
   }
   editDossier(dossier: Dossier):Observable<object>{
     return this.http.put('http://localhost:8000/dossiervisite/edit/'+dossier.id,dossier);
   }
-
   getAllPays():Observable<object>{
     return this.http.get('http://localhost:8000/paysdestination');
   }
@@ -113,8 +113,14 @@ constructor(private http:HttpClient) {};
    getTableauSuivi():Observable<any>{
   return this.http.get('http://localhost:8000/dossiervisite/suivi');
   }
-  uploadFiles(file :any):Observable<object>{
-    return this.http.post('http://localhost:8000/uploadFiles/new',file);
+  uploadFiles(up :any):Observable<object>{
+    return this.http.post('http://localhost:8000/uploadFiles/upload',up);
+  }
+  sauvegarde(t :any):Observable<object>{
+    return this.http.post('http://localhost:8000/uploadFiles/new',t);
+  }
+  count(historique :Historique):Observable<object>{
+    return this.http.post('http://localhost:8000/participation/count',historique);
   }
 
 
