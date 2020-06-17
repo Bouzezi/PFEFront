@@ -1,0 +1,38 @@
+<div class='card'>
+    <a style="cursor: pointer;" (click)="exportexcel()">
+        <button>Télécharger</button>
+      </a>
+    <div class='card-header'>
+        
+    </div>
+    <div class='card-body'>
+        
+        <div class="row">
+            <div class="col-3">
+                <input  type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+            </div>
+            <div class="col">
+                <div  class="form-text text-muted"></div>
+            </div>
+        </div>
+        <div class='table table-hover'>
+            <table class='table' id="excel-table">
+                <thead>
+                <tr > 
+                    <th></th> 
+                    <th *ngFor="let a of listeAnnee">{{a.annee}}</th> 
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let l of liste">
+                    <td>{{l.np}}</td>  
+                    <td *ngFor="let l1 of l.tab">{{l1}}</td>  
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted text-right">
+        <small>Powered by Angular</small>
+    </div>
+</div>

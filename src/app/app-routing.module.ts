@@ -17,6 +17,7 @@ import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.componen
 import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
 import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier.component';
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
+import { StatistiqueComponent } from './modules/statistique/statistique.component';
 
 
 const routes: Routes = [{
@@ -35,7 +36,8 @@ const routes: Routes = [{
     {path: 'ajoutecadre',component:AjoutecadreComponent},
     {path: 'table-suivi',component:TableauSuiviComponent},
     {path: 'choisir-dossier',component:ChoseDossierComponent},
-    {path: 'uploadFiles',component:UploadFilesComponent}
+    {path: 'uploadFiles',component:UploadFilesComponent},
+    {path: 'statistique',component:StatistiqueComponent}
   ]
 },
 

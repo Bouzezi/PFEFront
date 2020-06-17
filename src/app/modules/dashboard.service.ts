@@ -122,6 +122,9 @@ constructor(private http:HttpClient) {};
   count(historique :Historique):Observable<object>{
     return this.http.post('http://localhost:8000/participation/count',historique);
   }
+  stat1():Observable<object>{
+    return this.http.get('http://localhost:8000/participation/cadreParAnnee');
+  }
 
 
 }

@@ -18,6 +18,7 @@ import { AjoutecadreComponent } from './modules/ajoutecadre/ajoutecadre.componen
 import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.component';
 import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier.component';
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
+import { StatistiqueComponent } from './modules/statistique/statistique.component';
 
 
 
@@ -33,7 +34,8 @@ import { UploadFilesComponent } from './modules/upload-files/upload-files.compon
     AjoutecadreComponent,
     TableauSuiviComponent,
     ChoseDossierComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    StatistiqueComponent
 
 
     
