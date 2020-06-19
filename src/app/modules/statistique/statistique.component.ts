@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import * as XLSX from 'xlsx'; 
 import { Stat1 } from 'src/app/entities/stat1';
+import { Stat2 } from 'src/app/entities/organismeStat';
 @Component({
   selector: 'app-statistique',
   templateUrl: './statistique.component.html',
@@ -10,23 +11,50 @@ import { Stat1 } from 'src/app/entities/stat1';
 })
 export class StatistiqueComponent implements OnInit {
   fileName= 'TableauSuivi.xlsx';
+  organismes=[];
+  directions=[];
   listeAnnee=[]; 
   liste=[]; 
-  listeNombre=[];
-  ligne=[];
+  //liste1=[];
+  liste2=[];
   stat:Stat1;
+  oragnismeStat:Stat2;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
+    this.oragnismeStat=new Stat2();
+    this.getAllOrganismesEtrangers();
+    this.getAllDirections();
     this.stat1();
   }
+  getAllOrganismesEtrangers(){
+    this.Myservice.getAllOrganismesEtrangers().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.organismes.push(data[key]);
+        }
+      }
+    });
+  }
+  getAllDirections(){
+    this.Myservice.getAllDirections().subscribe(data=>{
+      console.log(data),
+      error => console.log(error);
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.directions.push(data[key]);
+        }
+      }
+    });
+  }
   stat1(){
+    this.liste=[];
     this.Myservice.stat1().subscribe((data:any )=> {
       console.log(data);
       
           for (let key2 in data){
-            //if(data.hasOwnProperty(key2))
-            //console.log(data.annee[key2]);
             if(key2 == "annee")
               this.listeAnnee=data[key2];
 
@@ -55,7 +83,60 @@ export class StatistiqueComponent implements OnInit {
     });
     console.log(this.liste);
   }
-
+  stat2(element:any){
+    this.liste=[];
+    this.stat.organisme=element.target.value;
+    this.Myservice.stat2(this.stat).subscribe((data:any )=> {
+      console.log(data);
+    
+          for (let key1 in data){
+            this.stat=new Stat1();
+            
+              
+              this.stat.np=data[key1].np;
+              
+ 
+                
+                for (let key in data[key1]){
+                  if(key!= "np"){
+                    this.stat.tab.push(data[key1][key]);
+                  }
+                  
+              }
+            
+            this.stat.tab.reverse();
+            this.liste.push(this.stat); 
+          }    
+    });
+    console.log(this.liste);
+  }
+  stat3(element:any){
+    this.liste=[];
+    this.stat.direction=element.target.value;
+    this.Myservice.stat3(this.stat).subscribe((data:any )=> {
+      console.log(data);
+    
+          for (let key1 in data){
+            this.stat=new Stat1();
+            
+              
+              this.stat.np=data[key1].np;
+              
+ 
+                
+                for (let key in data[key1]){
+                  if(key!= "np"){
+                    this.stat.tab.push(data[key1][key]);
+                  }
+                  
+              }
+            
+            this.stat.tab.reverse();
+            this.liste.push(this.stat); 
+          }    
+    });
+    console.log(this.liste);
+  }
   exportexcel(): void 
   {
      /* table id is passed over here */   

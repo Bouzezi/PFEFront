@@ -6,7 +6,24 @@
         
     </div>
     <div class='card-body'>
-        
+        <div class="row1">
+            <div class="direction">
+                <select class="form-control col-sm-8"  id="type" data-live-search="true"  name="direction" (change)="stat3($event)">
+                    <option value="" [disabled]="true">selectionner une direction</option>
+                    <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
+                      {{direction.libelle_direction}}
+                    </option> 
+                  </select>
+            </div>
+        <div class="organisme">
+            <select class="form-control" id="3" name="organisme_etranger" (change)="stat2($event)">
+                <option value="" [disabled]="true">selectionner un organisme</option>
+                <option *ngFor="let org of organismes"  [value]="org.libelle_org">
+                            {{org.libelle_org}}
+                </option>
+            </select>
+        </div>      
+        </div>
         <div class="row">
             <div class="col-3">
                 <input  type="text" class="form-control"   id="filterInput" placeholder="Type to filter">

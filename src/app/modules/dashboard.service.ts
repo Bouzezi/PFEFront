@@ -125,6 +125,11 @@ constructor(private http:HttpClient) {};
   stat1():Observable<object>{
     return this.http.get('http://localhost:8000/participation/cadreParAnnee');
   }
-
+  stat2(org:any):Observable<object>{
+    return this.http.post('http://localhost:8000/participation/statParOrganisme',org);
+  }
+  stat3(dir:any):Observable<object>{
+    return this.http.post('http://localhost:8000/participation/statParDirection',dir);
+  }
 
 }
