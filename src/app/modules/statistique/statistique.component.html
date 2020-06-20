@@ -8,7 +8,7 @@
     <div class='card-body'>
         <div class="row1">
             <div class="direction">
-                <select class="form-control col-sm-8"  id="type" data-live-search="true"  name="direction" (change)="stat3($event)">
+                <select class="form-control col-sm-8 selectpicker"  id="type" data-live-search="true"  name="direction" (change)="stat3($event)">
                     <option value="" [disabled]="true">selectionner une direction</option>
                     <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
                       {{direction.libelle_direction}}
@@ -22,7 +22,7 @@
                             {{org.libelle_org}}
                 </option>
             </select>
-        </div>      
+        </div>                
         </div>
         <div class="row">
             <div class="col-3">

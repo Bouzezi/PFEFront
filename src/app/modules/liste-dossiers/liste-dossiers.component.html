@@ -16,9 +16,11 @@
                 <thead>
                 <tr>
                     <th style="color:firebrick">id</th>
+                    <th>Emplacement des documents</th>
                     <th>Organisme étrangère</th>
                     <th>type_visite</th>
                     <th>Sujet</th>
+                    <th>Ville</th>
                     <th>Date début</th>
                     <th>Date fin</th>
                     <th>Statut</th>
@@ -28,18 +30,15 @@
                 <tbody>
                 <tr *ngFor='let dossier of filteredDossier'>
                     <td>{{ dossier.id }}</td>
+                    <td>C:\xampp\htdocs\backend_pfe\public\uploads</td>
                     <td>{{ dossier.organisme_etranger_id }}</td>
                     <td>{{ dossier.type_visite }}</td>
                     <td>{{ dossier.sujet }}</td>
+                    <td>{{ dossier.ville }}</td>
                     <td>{{ dossier.date_deb }}</td>
                     <td>{{ dossier.date_fin}}</td>
-                    <td >
-                        <select class="form-control col-sm-8" style="width: 150px;" id="type"  [(ngModel)]="dossier.statut" name="statut" (change)="changeStatut()">
-                              <option  value="En-cours">En-cours</option>
-                              <option  value="Finalise">Finalisé</option>
-                              <option  value="Annule">Annulé</option>
-                        </select>
-                    </td>
+                    <td>{{ dossier.statut }}</td>
+                    
                     <td>
                         <button (click)="edit($event)" class="btn btn-primary" [value]="dossier.id" >view</button>
                     </td>

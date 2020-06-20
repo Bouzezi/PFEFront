@@ -12,6 +12,7 @@ import { Note } from 'src/app/entities/note';
 export class NotemissionComponent implements OnInit {
 note:Note=new Note();
 sujet:string;
+cadres=[];
 dossier:Dossier=new Dossier();
 titre:any="";
   constructor(private route:Router,private Myservice:DashboardService) { }
@@ -23,6 +24,11 @@ titre:any="";
       console.log(this.dossier.id);
       error => console.log(error);
       this.sujet=this.dossier.sujet;
+      this.getCadres();
+      for (let index = 0; index < this.cadres.length; index++) {
+        console.log(this.cadres[index].prenom);
+        this.note.piece_jointe +=" "+this.cadres[index].prenom+" "+this.cadres[index].nom+" ";
+      }
       if(this.Myservice.typeVisite == "mission")
       this.titre= " إلى السيد وزير التنمية والإستثمار والتعاون الدولي";
       else
@@ -33,6 +39,16 @@ titre:any="";
     });
     
    
+  }
+  getCadres(){
+    for(let i=0;i<this.dossier.cadre_id.length;i++){
+        this.Myservice.getCadre(this.dossier.cadre_id[i]).subscribe((data:any) =>{
+          console.log(data),
+          error => console.log(error),
+          this.cadres.push(data[0]);
+        });
+    }
+    console.log(this.cadres);
   }
 
   suivant(){

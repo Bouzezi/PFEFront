@@ -15,9 +15,11 @@ export class ChoseDossierComponent implements OnInit {
   }
   typeMission(){
     this.Myservice.typeVisite="mission";
+    this.Myservice.id_dossier = null;
   }
   typeFormation(){
     this.Myservice.typeVisite="formation";
+    this.Myservice.id_dossier = null;
   }
 
   
