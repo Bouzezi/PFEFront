@@ -10,7 +10,7 @@ import { DashboardService } from '../dashboard.service';
 export class ListeDossiersComponent implements OnInit {
   items=[];
   id:number;
-  pageTitle = 'Dynamic! Game List';
+  pageTitle = 'Liste des dossiers de visites';
     imageWidth = 45;
     imageMargin = 1;
     showImage = true;

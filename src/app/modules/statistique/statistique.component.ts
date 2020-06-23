@@ -11,17 +11,20 @@ import { Stat2 } from 'src/app/entities/organismeStat';
 })
 export class StatistiqueComponent implements OnInit {
   fileName= 'TableauSuivi.xlsx';
+  organisme:string;
+  direction:string;
   organismes=[];
   directions=[];
   listeAnnee=[]; 
   liste=[]; 
-  //liste1=[];
-  liste2=[];
+
   stat:Stat1;
   oragnismeStat:Stat2;
   constructor(private router:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
+    this.organisme="selectionner un organisme";
+    this.direction="selectionner une direction";
     this.oragnismeStat=new Stat2();
     this.getAllOrganismesEtrangers();
     this.getAllDirections();
@@ -84,6 +87,7 @@ export class StatistiqueComponent implements OnInit {
     console.log(this.liste);
   }
   stat2(element:any){
+    this.direction="selectionner une direction";
     this.liste=[];
     this.stat.organisme=element.target.value;
     this.Myservice.stat2(this.stat).subscribe((data:any )=> {
@@ -111,6 +115,7 @@ export class StatistiqueComponent implements OnInit {
     console.log(this.liste);
   }
   stat3(element:any){
+    this.organisme="selectionner un organisme";
     this.liste=[];
     this.stat.direction=element.target.value;
     this.Myservice.stat3(this.stat).subscribe((data:any )=> {
@@ -137,6 +142,12 @@ export class StatistiqueComponent implements OnInit {
     });
     console.log(this.liste);
   }
+
+  /* doFilter(filterBy: string):any  [] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.stat.filter((stat: any) =>
+    stat.np.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  } */
   exportexcel(): void 
   {
      /* table id is passed over here */   

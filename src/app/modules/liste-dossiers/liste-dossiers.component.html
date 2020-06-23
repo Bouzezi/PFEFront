@@ -1,5 +1,5 @@
 <div class='card'>
-    <div class='card-header'>
+    <div class='card-header' style="color:firebrick">
         {{pageTitle}}
     </div>
     <div class='card-body'>
@@ -15,7 +15,7 @@
             <table class='table'>
                 <thead>
                 <tr>
-                    <th style="color:firebrick">id</th>
+                    <th>numero du dossier</th>
                     <th>Emplacement des documents</th>
                     <th>Organisme étrangère</th>
                     <th>type_visite</th>
@@ -30,7 +30,8 @@
                 <tbody>
                 <tr *ngFor='let dossier of filteredDossier'>
                     <td>{{ dossier.id }}</td>
-                    <td>C:\xampp\htdocs\backend_pfe\public\uploads</td>
+                    <td>C:\xampp\htdocs\backend_pfe\
+                        public\uploads</td>
                     <td>{{ dossier.organisme_etranger_id }}</td>
                     <td>{{ dossier.type_visite }}</td>
                     <td>{{ dossier.sujet }}</td>

@@ -24,7 +24,7 @@ checkbox:boolean;
     this.jwt_service.login(this.username,this.password).subscribe(res=>{
       error => console.log(error);
       localStorage.setItem('token', res.token);
-      this.router.navigateByUrl('/dashboard/dossiervisite');
+      this.router.navigateByUrl('/dashboard/choisir-dossier');
       });
     
   }

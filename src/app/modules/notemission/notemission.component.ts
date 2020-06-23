@@ -37,9 +37,12 @@ titre:any="";
       console.log(this.note.dossier_id);  
       this.getNote(this.note.dossier_id);  
     });
-    
+  
    
   }
+
+
+ 
   getCadres(){
     for(let i=0;i<this.dossier.cadre_id.length;i++){
         this.Myservice.getCadre(this.dossier.cadre_id[i]).subscribe((data:any) =>{

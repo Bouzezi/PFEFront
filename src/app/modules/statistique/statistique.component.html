@@ -8,35 +8,34 @@
     <div class='card-body'>
         <div class="row1">
             <div class="direction">
-                <select class="form-control col-sm-8 selectpicker"  id="type" data-live-search="true"  name="direction" (change)="stat3($event)">
-                    <option value="" [disabled]="true">selectionner une direction</option>
+                <select class="form-control col-sm-8 selectpicker" [(ngModel)]="direction"  id="type" data-live-search="true"  name="direction" (change)="stat3($event)">
+                    <option value="selectionner une direction" [disabled]="true">selectionner une direction</option>
                     <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
                       {{direction.libelle_direction}}
                     </option> 
                   </select>
             </div>
         <div class="organisme">
-            <select class="form-control" id="3" name="organisme_etranger" (change)="stat2($event)">
-                <option value="" [disabled]="true">selectionner un organisme</option>
+            <select class="form-control" id="3" [(ngModel)]="organisme" name="organisme_etranger" (change)="stat2($event)">
+                <option value="selectionner un organisme" [disabled]="true">selectionner un organisme</option>
                 <option *ngFor="let org of organismes"  [value]="org.libelle_org">
                             {{org.libelle_org}}
                 </option>
             </select>
         </div>                
         </div>
-        <div class="row">
-            <div class="col-3">
-                <input  type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
-            </div>
-            <div class="col">
-                <div  class="form-text text-muted"></div>
-            </div>
-        </div>
+        
         <div class='table table-hover'>
             <table class='table' id="excel-table">
                 <thead>
                 <tr > 
-                    <th></th> 
+                    <th>
+                        
+                            <div class="col-3">
+                                <input  type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+                            </div>
+                        
+                    </th> 
                     <th *ngFor="let a of listeAnnee">{{a.annee}}</th> 
                 </tr>
                 </thead>
@@ -50,6 +49,6 @@
         </div>
     </div>
     <div class="card-footer text-muted text-right">
-        <small>Powered by Angular</small>
+        <small></small>
     </div>
 </div>
