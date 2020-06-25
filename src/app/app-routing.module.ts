@@ -18,6 +18,7 @@ import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.com
 import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier.component';
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
 import { StatistiqueComponent } from './modules/statistique/statistique.component';
+import { ListOrganismeComponent } from './modules/list-organisme/list-organisme.component';
 
 
 const routes: Routes = [{
@@ -37,7 +38,8 @@ const routes: Routes = [{
     {path: 'table-suivi',component:TableauSuiviComponent},
     {path: 'choisir-dossier',component:ChoseDossierComponent},
     {path: 'uploadFiles',component:UploadFilesComponent},
-    {path: 'statistique',component:StatistiqueComponent}
+    {path: 'statistique',component:StatistiqueComponent},
+    {path: 'list-organisme',component:ListOrganismeComponent}
   ]
 },
 

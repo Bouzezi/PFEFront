@@ -19,6 +19,8 @@ import { TableauSuiviComponent } from './modules/tableau-suivi/tableau-suivi.com
 import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier.component';
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
 import { StatistiqueComponent } from './modules/statistique/statistique.component';
+import { ListOrganismeComponent } from './modules/list-organisme/list-organisme.component';
+import { AjouteOrganismeComponent } from './modules/ajoute-organisme/ajoute-organisme.component';
 
 
 
@@ -35,7 +37,10 @@ import { StatistiqueComponent } from './modules/statistique/statistique.componen
     TableauSuiviComponent,
     ChoseDossierComponent,
     UploadFilesComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    ListOrganismeComponent,
+    AjouteOrganismeComponent
+    
 
 
     
@@ -58,6 +63,7 @@ import { StatistiqueComponent } from './modules/statistique/statistique.componen
     
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AjouteOrganismeComponent]
 })
 export class AppModule { }

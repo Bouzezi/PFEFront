@@ -3,8 +3,6 @@ import { MatTableDataSource,MatSort,MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import {MatDialog} from  '@angular/material/dialog' ;
-import { SignInComponent } from 'src/app/shared/components/sign-in/sign-in.component';
-import { SignUpComponent } from 'src/app/shared/components/sign-up/sign-up.component';
 import { AjoutecadreComponent } from '../ajoutecadre/ajoutecadre.component';
 
 @Component({
@@ -13,24 +11,9 @@ import { AjoutecadreComponent } from '../ajoutecadre/ajoutecadre.component';
   styleUrls: ['./liste-cadre.component.scss']
 })
 export class ListeCadreComponent implements OnInit {
-
-  constructor(private router:Router,private Myservice:DashboardService, public dialog:MatDialog) { 
-    this.filteredCadres = this.cadres;
-    this.listFilter = '';
-  }
-
-  openDialog () {
-    const dialogRef = this.dialog.open(AjoutecadreComponent);
-
-    dialogRef.afterClosed (). subscribe ( result => {
-       console .log ( `Dialog result: $ {result} ` );
-    });
-  }
-
- 
   startindex =0;
   endindex=5;
-
+  nb:any;
   
   items=[];
   id:number;
@@ -39,12 +22,24 @@ export class ListeCadreComponent implements OnInit {
     
     filteredCadres= [];
     cadres= [];
-    
-  
-  
+  constructor(private router:Router,private Myservice:DashboardService, public dialog:MatDialog) { 
+    this.filteredCadres = this.cadres;
+    this.listFilter = '';
+  }
+
+  openDialog () {
+    const dialogRef = this.dialog.open(AjoutecadreComponent);
+    this.Myservice.titreComponent1="ajouter un cadre";
+    dialogRef.afterClosed (). subscribe ( result => {
+       console .log ( `Dialog result: $ {result} ` );
+       window.location.reload();
+    });
+  }
+
   ngOnInit() {
     this.Myservice.getAllCadres().subscribe(data => {
       console.log(data);
+      this.nb=Math.round(Object.keys(data).length/5)+1;
       for (let key in data)
       if(data.hasOwnProperty(key))
       this.cadres.push(data[key]);
@@ -64,7 +59,6 @@ export class ListeCadreComponent implements OnInit {
 
   getarray(length){
     return new Array(length);
-
   }
   
     get listFilter(): string {
@@ -78,6 +72,7 @@ export class ListeCadreComponent implements OnInit {
  
     edit(element: any){
       console.log(element.target.value);
+      this.Myservice.titreComponent1="Modifier un cadre";
       this.Myservice.id_cadre=element.target.value;
  
    

@@ -10,6 +10,7 @@ import { Bordereau } from '../entities/bordereau';
 import { cadreINS } from '../entities/cadreINS';
 import { Historique } from '../entities/historique';
 import { Upload } from '../entities/upload';
+import { Organisme } from '../entities/organisme';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ myDossier=this.dossier.asObservable();
 id_dossier:any;
 id_cadre:any;
 typeVisite:string; 
+titreComponent:string;
+titreComponent1:string;
+id_organisme:any;
 constructor(private http:HttpClient) {};
 
   setDossier(dossier:Dossier){
@@ -131,5 +135,13 @@ constructor(private http:HttpClient) {};
   stat3(dir:any):Observable<object>{
     return this.http.post('http://localhost:8000/participation/statParDirection',dir);
   }
-
+  newOrganisme(organisme:Organisme):Observable<object>{
+    return this.http.post('http://localhost:8000/organismeEtranger/new',organisme);
+  }
+  editOrganisme(organisme:Organisme):Observable<object>{
+    return this.http.put('http://localhost:8000/organismeEtranger/edit/'+ organisme.id,organisme);
+  }
+  getOrganisme(id:any):Observable<object>{
+    return this.http.get('http://localhost:8000/organismeEtranger/'+id);
+  }
 }

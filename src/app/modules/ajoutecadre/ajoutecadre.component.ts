@@ -11,10 +11,12 @@ import { cadreINS } from 'src/app/entities/cadreINS';
 export class AjoutecadreComponent implements OnInit {
   directions=[];
   cadre:cadreINS;
+  titre:string;
   constructor(private router:Router,private Myservice:DashboardService) { }
  
 
   ngOnInit() {
+    this.titre=this.Myservice.titreComponent1;
     if(this.Myservice.id_cadre != null){
       this.getcadre();
     }
@@ -66,11 +68,6 @@ getcadre(){
         error => console.log(error) 
       }); 
     }
-  
-    cancel(){
-      window.location.reload();
-    }
-
 }
 
 

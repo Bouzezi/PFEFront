@@ -65,7 +65,7 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li *ngFor="let i of getarray(filteredCadres.length); let in = index" class="page-item">
+                  <li *ngFor="let i of getarray(nb); let in = index" class="page-item">
                       <button  class="page-link" (click)="updateindex(in)">{{in+1}}</button>
                     </li>
                     <li class="page-item">
