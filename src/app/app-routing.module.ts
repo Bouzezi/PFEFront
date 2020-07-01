@@ -19,6 +19,7 @@ import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
 import { StatistiqueComponent } from './modules/statistique/statistique.component';
 import { ListOrganismeComponent } from './modules/list-organisme/list-organisme.component';
+import { ChangePasswordComponent } from './shared/components/change-password/change-password.component';
 
 
 const routes: Routes = [{
@@ -45,6 +46,8 @@ const routes: Routes = [{
 
 { path: 'sign-in', component: SignInComponent},
 { path: '', component: SignInComponent},
+{ path: 'sign-up', component:SignUpComponent},
+{ path: 'changePassword', component:ChangePasswordComponent}
 ];
 
 

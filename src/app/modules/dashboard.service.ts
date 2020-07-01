@@ -11,6 +11,7 @@ import { cadreINS } from '../entities/cadreINS';
 import { Historique } from '../entities/historique';
 import { Upload } from '../entities/upload';
 import { Organisme } from '../entities/organisme';
+import { User } from '../entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -143,5 +144,8 @@ constructor(private http:HttpClient) {};
   }
   getOrganisme(id:any):Observable<object>{
     return this.http.get('http://localhost:8000/organismeEtranger/'+id);
+  }
+  changePassword(user:User):Observable<object>{
+    return this.http.put('http://localhost:8000/changerPassword',user);
   }
 }

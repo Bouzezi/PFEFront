@@ -27,8 +27,10 @@
                             <input matInput type="password" placeholder="Your Password" [(ngModel)]="password" (keyup.enter)="login()">
                         </mat-form-field>
                     </div>
+                    
                     <div class="form-group">
-                        <mat-checkbox value="Remember me" [(ngModel)]="checkbox" style="font-size: 13px; margin-left: 10px;" (change)="remember()">Remember me</mat-checkbox>
+                        <mat-checkbox value="Remember me" class="link" [(ngModel)]="checkbox" style="font-size: 13px; margin-left: 10px;" (change)="remember()">Remember me</mat-checkbox>
+                        <a mat-button class="link" routerLinkActive="active" routerLink="/changePassword" target="_blank"> mot de passe oublié</a>  
                     </div>
                     <mat-card-actions class="actions">
                         <button  type="submit" class="btn" class="btn btn-primary" (click)="login()">Log in</button>
