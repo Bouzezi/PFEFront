@@ -1,4 +1,7 @@
-<h2 mat-dialog-title>{{titre}}</h2>
+
+  <h2 mat-dialog-title class="card-title ">{{titre}}</h2>
+
+
 <mat-dialog-content class="mat-typography">
   
 <form>  
@@ -46,6 +49,8 @@
   
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button  class="btn " (click)="ajoute()">ajouter</button>
-  <button  class="btn btn-warning" (click)="update()">modifier</button>
+  <button  class="btn btn-info" [hidden]="btn1" (click)="ajoute()">{{titre}}</button>
+</mat-dialog-actions>
+<mat-dialog-actions align="end">
+  <button  class="btn "  [hidden]="btn2" (click)="update()">{{titre}}</button>
 </mat-dialog-actions>

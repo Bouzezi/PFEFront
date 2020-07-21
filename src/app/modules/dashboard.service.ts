@@ -17,7 +17,7 @@ import { User } from '../entities/user';
   providedIn: 'root'
 })
 export class DashboardService {
-private dossier = new BehaviorSubject<Dossier>(new Dossier());
+ dossier = new BehaviorSubject<Dossier>(new Dossier());
 myDossier=this.dossier.asObservable();
 id_dossier:any;
 id_cadre:any;
@@ -147,5 +147,8 @@ constructor(private http:HttpClient) {};
   }
   changePassword(user:User):Observable<object>{
     return this.http.put('http://localhost:8000/changerPassword',user);
+  }
+  dashbord():Observable<object>{
+    return this.http.get('http://localhost:8000/dashbord/');
   }
 }

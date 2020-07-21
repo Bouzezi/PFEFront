@@ -1,14 +1,41 @@
-<form >
-    <div class="col-md-6">
-        <input type="file" name="file" (change)="upload($event)" required>
-  
-    </div>
-    <diV class="col-md-6">
-        <input type="submit" value="Upload" (click)="onSubmit()">
-    </diV>
-    <diV class="col-md-6">
-        <input type="submit" value="Sauvegarder le fichier" (click)="sauvegarde()">
-    </diV>
-</form>
+<div class="container">
+    <div class="row it marg">
+        <div class="col-sm-offset-1 col-sm-10" id="one">
+            <p>
+                S'il vous plaît uploader des documents au format rar , zip .
+            </p><br>
+            <div class="row">
+            <div class="col-sm-offset-4 col-sm-4 form-group">
+                <h3 class="text-center">Mon Document</h3>
+            </div><!--form-group-->
+            </div><!--row-->
+            <div id="uploader">
+                <div class="row uploadDoc">
+                    <div class="col-sm-3">
+                        <div class="fileUpload btn btn-orange">
+                        <img src="assets/img/upload.svg" class="icon">
+                        <span class="upl" id="upload">Upload document</span>
+                        <input type="file" class="upload up" id="up"  (change)="upload($event)"/>
+                        </div><!-- btn-orange -->
+                        <div>{{invalidFileMsg}}</div><!--error-->
+                    </div><!-- col-3 -->
+                    <div class="col-sm-8">
+                        <select class="form-control" id="2"  [(ngModel)]="cadre_id"   name="cadre_id" >
+                            <option value="selectionner un cadre" [disabled]="true">selectionner un cadre</option>
+                            <option *ngFor="let cadre of cadres"  [value]="cadre.id">
+                            {{cadre.nom}} {{cadre.prenom}}
+                            </option>
+                        </select>
+                    </div><!--col-8-->
+                    <div class="col-sm-1"><a class="btn-check"><i class="fa fa-times"></i></a></div><!-- col-1 -->
+                </div><!--row-->
+            </div><!--uploader-->
+            <div class="text-center submit" >
+            <!-- <a class="btn btn-next enregistrer" ><i class="fa fa-paper-plane word"></i>Sauvegarder</a> -->
+            <button class="btn btn-next" (click)="onSubmit()" (click)="sauvegarde()">Enregistrer</button>
+            </div>
+        </div><!--one-->
+    </div><!-- row -->
+</div><!-- container -->
     
 

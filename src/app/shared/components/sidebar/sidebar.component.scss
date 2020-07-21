@@ -1,16 +1,30 @@
 :host {
   .mat-icon {
+    color: green($color: #37ce41);
     vertical-align: middle;
     margin-right: 20px;
   }
   .profile-card {
+    background-color: green($color: #1fd025);
     text-align: center;
     padding: 0 20px 20px 20px;
+
+
     img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
     }
+    
   }
 }
+.mat-list-item {
+  background-color:red($color: #9b3030);
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+.header{
+  margin-top: 15px;
+}
+

@@ -97,6 +97,9 @@ export class BorderouComponent implements OnInit {
   terminer(){
     this.route.navigateByUrl('/dashboard/liste-dossierVisite');
   }
+  precedent(){
+    this.route.navigateByUrl('/dashboard/posts');
+  }
   download(){
     const options= {
       name:'bordereau.pdf',

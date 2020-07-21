@@ -15,7 +15,9 @@ export class ListeDossiersComponent implements OnInit {
     imageMargin = 1;
     showImage = true;
     _listFilter = '';
-    
+    startindex =0;
+    endindex=10;
+    nb:any;
     filteredDossier= [];
     dossier= [];
   constructor(private router:Router,private Myservice:DashboardService) { 
@@ -29,6 +31,7 @@ export class ListeDossiersComponent implements OnInit {
       for (let key in data)
       if(data.hasOwnProperty(key))
       this.dossier.push(data[key]);
+      this.nb=Math.round(Object.keys(data).length/10)+1;
     });
   }
 
@@ -42,15 +45,22 @@ export class ListeDossiersComponent implements OnInit {
         this.filteredDossier = this.listFilter ? this.doFilter(this.listFilter) : this.dossier;
     }
  
- 
-
- 
     doFilter(filterBy: string):any  [] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.dossier.filter((dossier: any) =>
         dossier.sujet.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
- 
+    updateindex(pageIndex){
+      this.startindex= pageIndex * 10;
+      this.endindex= this.startindex + 10;
+      console.log(this.startindex)
+      console.log(this.endindex)
+      }
+    
+      getarray(length){
+        return new Array(length);
+      }
+
     edit(element:any){
       console.log(element.target.value);
       this.Myservice.id_dossier=element.target.value;

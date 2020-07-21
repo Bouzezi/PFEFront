@@ -17,10 +17,17 @@ export class StatistiqueComponent implements OnInit {
   directions=[];
   listeAnnee=[]; 
   liste=[]; 
-
   stat:Stat1;
   oragnismeStat:Stat2;
-  constructor(private router:Router,private Myservice:DashboardService) { }
+  _listFilter = '';
+  filteredCadres= [];
+    startindex =0;
+    endindex=10;
+    nb:any;
+  constructor(private router:Router,private Myservice:DashboardService) { 
+    this.filteredCadres= this.liste;
+    this.listFilter = '';
+  }
 
   ngOnInit() {
     this.organisme="selectionner un organisme";
@@ -67,9 +74,7 @@ export class StatistiqueComponent implements OnInit {
             if(key1 != "annee"){
               
               this.stat.np=data[key1].np;
-              
- 
-                
+              this.nb=Math.round(Object.keys(data).length/10)+1;
                 for (let key in data[key1]){
                   if(key!= "np"){
                     this.stat.tab.push(data[key1][key]);
@@ -85,6 +90,7 @@ export class StatistiqueComponent implements OnInit {
          
     });
     console.log(this.liste);
+    this.filteredCadres= this.liste;
   }
   stat2(element:any){
     this.direction="selectionner une direction";
@@ -113,6 +119,7 @@ export class StatistiqueComponent implements OnInit {
           }    
     });
     console.log(this.liste);
+    this.filteredCadres= this.liste;
   }
   stat3(element:any){
     this.organisme="selectionner un organisme";
@@ -141,13 +148,32 @@ export class StatistiqueComponent implements OnInit {
           }    
     });
     console.log(this.liste);
+    this.filteredCadres= this.liste;
   }
 
-  /* doFilter(filterBy: string):any  [] {
+  updateindex(pageIndex){
+    this.startindex= pageIndex * 10;
+    this.endindex= this.startindex + 10;
+    console.log(this.startindex)
+    console.log(this.endindex)
+    }
+    getarray(length){
+      return new Array(length);
+    }
+    get listFilter(): string {
+      return this._listFilter;
+    }
+    set listFilter(value: string) {
+      this._listFilter = value;
+      this.filteredCadres = this.listFilter ? this.doFilter(this.listFilter) : this.liste;
+    }
+    doFilter(filterBy: string):any  [] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.stat.filter((stat: any) =>
-    stat.np.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  } */
+    return this.liste.filter((l: any) =>
+    (l.np.toLocaleLowerCase().indexOf(filterBy) !== -1));
+    }
+  
+  
   exportexcel(): void 
   {
      /* table id is passed over here */   

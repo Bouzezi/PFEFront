@@ -10,11 +10,18 @@ import { Organisme } from 'src/app/entities/organisme';
 export class AjouteOrganismeComponent implements OnInit {
   Org:string;
  organisme:Organisme;
+ btn1=false;
+ btn2=false;
   constructor(private Myservice:DashboardService) { }
 
   ngOnInit() {
     this.organisme=new Organisme();
     this.Org=this.Myservice.titreComponent;
+    if(this.Org == "Modifier un Organisme")
+      this.btn1=true;
+    else
+    this.btn2=true;
+
     if(this.Myservice.id_organisme != null){
       this.getOrganisme();
     }
@@ -33,6 +40,7 @@ export class AjouteOrganismeComponent implements OnInit {
     console.log(this.organisme);
     this.Myservice.newOrganisme(this.organisme).subscribe(data => {
     console.log(data)
+    alert("organisme etranger est ajouté avec succsès");
     });
   }
 
@@ -42,7 +50,12 @@ export class AjouteOrganismeComponent implements OnInit {
       console.log(this.organisme);
       this.Myservice.editOrganisme(this.organisme).subscribe(data =>{
         console.log(data),
-        error => console.log(error) 
+        alert("organisme etranger est modifié avec succsès");
+        error => {
+          console.log(error) ;
+          alert("vérifier vos donnée");
+        }
+        
       }); 
     }
 

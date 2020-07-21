@@ -14,9 +14,16 @@ export class JwtService {
   logout() {
     localStorage.removeItem('token');
   }
-  public get loggedIn(): boolean{
-    return localStorage.getItem('token') !==  null;
-  }
+  public isLoggedIn(): boolean {      
+    let status = false;      
+    if (localStorage.getItem('token') != null) {      
+       status = true;      
+    }    
+    else {      
+       status = false;      
+       }      
+    return status;      
+    } 
   public getToken(): string {
     return localStorage.getItem('token');
   }

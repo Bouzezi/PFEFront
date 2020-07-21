@@ -17,6 +17,7 @@
      padding-bottom: 50px;
      box-shadow: 10px 10px 10px rgb(184, 181, 181);
      border-radius: 20px;
+     
  } 
  .columns{
      display: flex;
@@ -71,5 +72,9 @@
 }
 .form-group mat-checkbox {
    padding-top: 5px;
+}
+.imgSign{
+    width: 400px;
+    height: 300px;
 }
  

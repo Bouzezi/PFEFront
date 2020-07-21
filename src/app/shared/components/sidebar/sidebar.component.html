@@ -1,44 +1,50 @@
-<mat-nav-list>
+<mat-nav-list class="side">
     <div class="profile-card">
         <div class="header">
-            <h2>welcome</h2>
-            <h4>Admin Dashboard</h4>
+            <img src="assets/img/dash.jpg" > 
         </div>
-        <img src="assets/img/user.png" alt="Soufiane FADIL">
+        
     </div>
 
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Dossier de Visite</h2>
+    <h2 matSubheader >Dossier de Visite</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/accueil']">
+        <mat-icon>dashboard</mat-icon> Dashboard </a>
+
    
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/choisir-dossier']">
-        <mat-icon>folder</mat-icon> choisier type de dossier </a>
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/choisir-dossier']">
+        <mat-icon>folder</mat-icon> choisir type de dossier </a>
 
 
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/liste-dossierVisite']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/liste-dossierVisite']">
         <mat-icon>dns</mat-icon> Liste de Dossier </a>
+    
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/uploadFiles']">
+        <mat-icon>cloud_upload</mat-icon> Upload Rapport</a>
 
     <mat-divider></mat-divider>
 
     <h2 matSubheader>Gestion cadres</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/liste-cadre']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info" [routerLink]="['/dashboard/liste-cadre']">
         <mat-icon>dns</mat-icon>
         Liste cadres
     </a>
     <h2 matSubheader>Gestion Organismes</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/list-organisme']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info"  [routerLink]="['/dashboard/list-organisme']">
         <mat-icon>dns</mat-icon>
         Liste organismes
     </a>
     <h2 matSubheader>Tableau de suivi</h2>
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/table-suivi']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info"  [routerLink]="['/dashboard/table-suivi']">
         <mat-icon>contact_phone</mat-icon>
         tableau de suivi
     </a>
     <h2 matSubheader>Statistiques</h2>
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/dashboard/statistique']">
+    <a mat-list-item routerLinkActive="list-item-active" class="text-info"  [routerLink]="['/dashboard/statistique']">
         <mat-icon>timeline</mat-icon>
         statistique
     </a>

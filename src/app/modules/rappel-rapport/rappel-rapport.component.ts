@@ -52,7 +52,9 @@ export class RappelRapportComponent implements OnInit {
   suivant(){
     this.router.navigateByUrl('/dashboard/posts');
   }
-
+  precedent(){
+    this.router.navigateByUrl('/dashboard/fiche');
+  }
   download(){
     const options= {
       name:'rappel_rapport.pdf',

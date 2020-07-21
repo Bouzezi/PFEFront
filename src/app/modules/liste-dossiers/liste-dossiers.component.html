@@ -1,6 +1,8 @@
+
 <div class='card'>
-    <div class='card-header' style="color:firebrick">
-        {{pageTitle}}
+    <div class="card-header card-header-success">
+        <h4 class="card-title ">Liste des Dossiers des visites</h4>
+        <p class="card-category"> </p>
     </div>
     <div class='card-body'>
         <div class="row">
@@ -11,9 +13,9 @@
                 <div *ngIf='listFilter' class="form-text text-muted">Filtered by: {{listFilter}}</div>
             </div>
         </div>
-        <div class='table table-hover'>
+        <div class="table-responsive">
             <table class='table'>
-                <thead>
+                <thead class="text-success">
                 <tr>
                     <th>numero du dossier</th>
                     <th>Emplacement des documents</th>
@@ -41,7 +43,7 @@
                     <td>{{ dossier.statut }}</td>
                     
                     <td>
-                        <button (click)="edit($event)" class="btn btn-primary" [value]="dossier.id" >view</button>
+                        <button (click)="edit($event)" class="btn btn-success" [value]="dossier.id" >view</button>
                     </td>
                 </tr>
                 </tbody>
@@ -49,6 +51,24 @@
         </div>
     </div>
     <div class="card-footer text-muted text-right">
-        <small>Powered by Angular</small>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link"  aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li *ngFor="let i of getarray(nb); let in = index" class="page-item">
+                  <button  class="page-link" (click)="updateindex(in)">{{in+1}}</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link"   aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+              
+            </ul>
+          </nav>
+       
     </div>
 </div>

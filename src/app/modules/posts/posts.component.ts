@@ -15,6 +15,8 @@ export class PostsComponent implements OnInit {
   sujet:string;
   date_deb:string;
   date_fin:string;
+  typeV1=false;
+  typeV2=false;
   constructor(private route:Router,private Myservice:DashboardService) { }
 
   ngOnInit() {
@@ -25,6 +27,16 @@ export class PostsComponent implements OnInit {
       this.sujet=this.dossier.sujet;
       this.date_deb=this.dossier.date_deb;
       this.date_fin=this.dossier.date_fin;
+      if(this.dossier.type_visite == "formation")
+      {
+        this.typeV1=true;
+        this.typeV2=false;
+      }
+      else
+      {
+        this.typeV1=false;
+        this.typeV2=true;
+      }
       console.log(this.id_cadres);
     });
     this.getCadres();
@@ -42,6 +54,12 @@ export class PostsComponent implements OnInit {
   }
   suivant(){
     this.route.navigateByUrl('/dashboard/borderau');
+  }
+  terminer(){
+    this.route.navigateByUrl('/dashboard/liste-dossierVisite');
+  }
+  precedent(){
+    this.route.navigateByUrl('/dashboard/rappel-rapport');
   }
   download(){
     const options= {

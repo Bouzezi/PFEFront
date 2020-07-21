@@ -11,25 +11,32 @@ import * as XLSX from 'xlsx';
 export class TableauSuiviComponent implements OnInit {
   tableau_suivi:Array<TableauSuivi>=[];
   suivi:TableauSuivi;
+  _listFilter = '';
+    filteredSuivi= [];
   cadres=[];
   tab=[];
   frais="INS";
-  fileName= 'TableauSuivi.xlsx';  
-  constructor(private router:Router,private Myservice:DashboardService) { }
+  fileName= 'TableauSuivi.xlsx'; 
+  startindex =0;
+  endindex=50;
+  nb:any;
+  constructor(private router:Router,private Myservice:DashboardService) { 
+    this.filteredSuivi = this.tab;
+    this.listFilter = '';
+  }
 
   ngOnInit() {
     this.Myservice.getTableauSuivi().subscribe(data => {
       console.log(data);
+      this.nb=Math.round(Object.keys(data).length/50)+1;
       for (let key in data){
         if(data.hasOwnProperty(key)){
-          for(let cadre of data[key].cadre_participe){
-            console.log(cadre);
             this.suivi=new TableauSuivi();
-            this.suivi.nom=cadre.nom;
-            this.suivi.prenom=cadre.prenom;
-            this.suivi.grade=cadre.grade;
-            this.suivi.fonction=cadre.fonction;
-            this.suivi.direction=cadre.direction;
+            this.suivi.nom=data[key].nom;
+            this.suivi.prenom=data[key].prenom;
+            this.suivi.grade=data[key].grade;
+            this.suivi.fonction=data[key].fonction;
+            this.suivi.direction=data[key].direction;
             this.suivi.nature=data[key].nature;
             this.suivi.nbr_participant_ins=data[key].nbr_participant_ins;
             this.suivi.nbr_participant_sp=data[key].nbr_participant_sp;
@@ -52,10 +59,34 @@ export class TableauSuiviComponent implements OnInit {
               this.frais=this.frais+" / "+this.suivi.organisme_etranger_lib;
             this.tab.push(this.suivi);
           }
-        }
-      } 
+      }
+      
     });
-    console.log(this.tab);
+
+  }
+  updateindex(pageIndex){
+    this.startindex= pageIndex * 50;
+    this.endindex= this.startindex + 50;
+    console.log(this.startindex)
+    console.log(this.endindex)
+    }
+  getarray(length){
+    return new Array(length);
+  }
+  
+    get listFilter(): string {
+        return this._listFilter;
+    }
+ 
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredSuivi = this.listFilter ? this.doFilter(this.listFilter) : this.tab;
+    }
+  doFilter(filterBy: string):any  [] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.tab.filter((cadreINS: any) =>
+      (cadreINS.prenom.toLocaleLowerCase()+cadreINS.nom.toLocaleLowerCase()).indexOf(filterBy) !== -1
+    );
   }
   exportexcel(): void 
   {

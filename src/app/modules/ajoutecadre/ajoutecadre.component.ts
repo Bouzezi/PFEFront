@@ -12,11 +12,18 @@ export class AjoutecadreComponent implements OnInit {
   directions=[];
   cadre:cadreINS;
   titre:string;
+  btn1=false;
+  btn2=false;
   constructor(private router:Router,private Myservice:DashboardService) { }
  
 
   ngOnInit() {
+    
     this.titre=this.Myservice.titreComponent1;
+    if(this.titre == "Modifier un Cadre")
+      this.btn1=true;
+    else
+      this.btn2=true;
     if(this.Myservice.id_cadre != null){
       this.getcadre();
     }
@@ -54,9 +61,10 @@ getcadre(){
   ajoute(){
     console.log(this.cadre);
     this.Myservice.newcadre(this.cadre).subscribe(data => {
-      confirm("seucces") ,console.log(data),
+      confirm("cadre est ajouté avec succsès") ,console.log(data),
       error => confirm("ajoute cadre echec");
     });
+
   }
 
 
@@ -65,7 +73,8 @@ getcadre(){
       console.log(this.cadre);
       this.Myservice.editcadre(this.cadre).subscribe(data =>{
         console.log(data),
-        error => console.log(error) 
+        error => console.log(error);
+        alert("cadre est modifié avec succsès");
       }); 
     }
 }

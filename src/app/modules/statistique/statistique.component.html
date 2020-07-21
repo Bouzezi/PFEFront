@@ -1,7 +1,7 @@
 <div class='card'>
-    <a style="cursor: pointer;" (click)="exportexcel()">
-        <button>Télécharger</button>
-      </a>
+    <div>
+      <button class="btn btn-primary" (click)="exportexcel()">Télécharger</button>
+    </div>
     <div class='card-header'>
         
     </div>
@@ -32,7 +32,7 @@
                     <th>
                         
                             <div class="col-3">
-                                <input  type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+                                <input  type="text" class="form-control" [(ngModel)]="_listFilter"  name="Input"  id="filterInput" placeholder="Type to filter">
                             </div>
                         
                     </th> 
@@ -40,7 +40,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let l of liste">
+                <tr *ngFor="let l of filteredCadres | slice:startindex:endindex ">
                     <td>{{l.np}}</td>  
                     <td *ngFor="let l1 of l.tab">{{l1}}</td>  
                 </tr>
@@ -49,6 +49,24 @@
         </div>
     </div>
     <div class="card-footer text-muted text-right">
-        <small></small>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link"  aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li *ngFor="let i of getarray(nb); let in = index" class="page-item">
+                  <button  class="page-link" (click)="updateindex(in)">{{in+1}}</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link"   aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+              
+            </ul>
+          </nav>
+       
     </div>
 </div>

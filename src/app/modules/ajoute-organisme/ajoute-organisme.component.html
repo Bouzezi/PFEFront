@@ -8,16 +8,14 @@
             <input type="text" class="form-control" [(ngModel)]="organisme.libelle" name="nom"
              placeholder="Nom">
           </div>
-
     </div>
-   
-    
-    
-  </form>
+</form>
   
   
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button  class="btn " (click)="ajoute()">ajouter</button>
-  <button  class="btn btn-warning" (click)="update()">modifier</button>
+  <button  class="btn " [hidden]="btn1" (click)="ajoute()">{{Org}}</button>
+</mat-dialog-actions>
+<mat-dialog-actions align="end">
+  <button  class="btn "  [hidden]="btn2" (click)="update()">{{Org}}</button>
 </mat-dialog-actions>

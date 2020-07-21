@@ -12,7 +12,7 @@ import { AjoutecadreComponent } from '../ajoutecadre/ajoutecadre.component';
 })
 export class ListeCadreComponent implements OnInit {
   startindex =0;
-  endindex=5;
+  endindex=50;
   nb:any;
   
   items=[];
@@ -29,7 +29,7 @@ export class ListeCadreComponent implements OnInit {
 
   openDialog () {
     const dialogRef = this.dialog.open(AjoutecadreComponent);
-    this.Myservice.titreComponent1="ajouter un cadre";
+    this.Myservice.titreComponent1="Ajouter un Cadre";
     dialogRef.afterClosed (). subscribe ( result => {
        console .log ( `Dialog result: $ {result} ` );
        window.location.reload();
@@ -39,7 +39,7 @@ export class ListeCadreComponent implements OnInit {
   ngOnInit() {
     this.Myservice.getAllCadres().subscribe(data => {
       console.log(data);
-      this.nb=Math.round(Object.keys(data).length/5)+1;
+      this.nb=Math.round(Object.keys(data).length/50)+1;
       for (let key in data)
       if(data.hasOwnProperty(key))
       this.cadres.push(data[key]);
@@ -50,8 +50,8 @@ export class ListeCadreComponent implements OnInit {
   
 
   updateindex(pageIndex){
-  this.startindex= pageIndex * 5;
-  this.endindex= this.startindex + 5;
+  this.startindex= pageIndex * 50;
+  this.endindex= this.startindex + 50;
   console.log(this.startindex)
   console.log(this.endindex)
   }
@@ -72,17 +72,15 @@ export class ListeCadreComponent implements OnInit {
  
     edit(element: any){
       console.log(element.target.value);
-      this.Myservice.titreComponent1="Modifier un cadre";
+      this.Myservice.titreComponent1="Modifier un Cadre";
       this.Myservice.id_cadre=element.target.value;
- 
-   
-  }
+     }
 
  
     doFilter(filterBy: string):any  [] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.cadres.filter((cadreINS: any) =>
-        cadreINS.nom.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        (cadreINS.nom.toLocaleLowerCase()+cadreINS.prenom.toLocaleLowerCase()).indexOf(filterBy) !== -1);
     }
  
   

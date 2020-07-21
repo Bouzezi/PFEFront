@@ -14,7 +14,7 @@ export class ListOrganismeComponent implements OnInit {
   organismes=[];
   _listFilter = '';
   startindex =0;
-  endindex=5;
+  endindex=10;
   filteredOrganismes= [];
   nb:any;
   constructor(private router:Router,private Myservice:DashboardService, public dialog:MatDialog) {
@@ -28,7 +28,7 @@ export class ListOrganismeComponent implements OnInit {
 
   openDialog () {
     const dialogRef = this.dialog.open(AjouteOrganismeComponent);
-    this.Myservice.titreComponent="ajouter un organisme";
+    this.Myservice.titreComponent="Ajouter un Organisme";
     dialogRef.afterClosed (). subscribe ( result => {
        console .log ( `Dialog result: $ {result} ` );
        window.location.reload();
@@ -37,8 +37,8 @@ export class ListOrganismeComponent implements OnInit {
   }
 
   updateindex(pageIndex){
-    this.startindex= pageIndex * 5;
-    this.endindex= this.startindex + 5;
+    this.startindex= pageIndex * 10;
+    this.endindex= this.startindex + 10;
     console.log(this.startindex)
     console.log(this.endindex)
     }
@@ -66,7 +66,7 @@ export class ListOrganismeComponent implements OnInit {
   getAllOrganismesEtrangers(){
     this.Myservice.getAllOrganismesEtrangers().subscribe(data=>{
       console.log(data),
-      this.nb=Math.round(Object.keys(data).length/5)+1;
+      this.nb=Math.round(Object.keys(data).length/10)+1;
       error => console.log(error);
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
@@ -77,7 +77,7 @@ export class ListOrganismeComponent implements OnInit {
   }
   edit(element: any){
     console.log(element.target.value);
-    this.Myservice.titreComponent="modifier un organisme";
+    this.Myservice.titreComponent="Modifier un Organisme";
     this.Myservice.id_organisme=element.target.value;
   }
 }

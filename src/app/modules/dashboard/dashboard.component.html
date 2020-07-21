@@ -8,8 +8,7 @@
               <div class="form-row">
                   <div class="form-group col-2">
                       <label>Date</label>
-                      <input type="date" name="date" class="form-control"
-                      [(ngModel)]="dossier.date" >
+                      <input type="date" name="date_arrive_invitation" class="form-control" [(ngModel)]="dossier.date_arrive_invitation" >
                   </div>
   
                   <div class="form-group col-4">
@@ -178,7 +177,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <select class="form-control col-sm-8" id="1" [(ngModel)]="direction1"  name="direction_centrale1" (change)="getCadreParDirection($event)">
+                        <select class="form-controll col-sm-8" id="1" [(ngModel)]="direction1"  name="direction_centrale1" (change)="getCadreParDirection($event)">
                           <option value="" [disabled]="true">selectionner une direction</option>
                           <option *ngFor="let direction of directions"  [value]="direction.libelle_direction">
                             {{direction.libelle_direction}}
@@ -298,7 +297,7 @@
                 </table>
   
                 <div class="hatem">
-                <table class="table table-bordered" >
+                <table class="table table-bordered" [hidden]="typeVisiteTab">
                   <thead>
                     <tr>
                       <th rowspan="2" > Remarque</th>
@@ -306,13 +305,13 @@
                       value="تاريخ الحصول على الإذن بالمأمورية" readonly lang="ar" dir="rtl"> </th>
   
                       <th>
-                      <input type="text" class="form-control" style="text-align: center;"
+                      <input type="text" class="form-control" style="text-align: center;" 
                        value=" تاريخ إرسال الوثائق الخاصة بالمأمورية إلى الوزارة" readonly lang="ar" dir="rtl"> </th>
                     
                       
                     </tr>
                     <tr>
-                      <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_arrive_invitation" name="date_arrive_invitation"> </td>
+                      <td> <input type="date" class="form-control"  [(ngModel)]="dossier.date" name="date"> </td>
                       <td> <input type="date" class="form-control" [(ngModel)]="dossier.date_envoi_documents" name="date_envoi_documents"></td>
                     </tr>
                   </thead>
@@ -336,7 +335,6 @@
   </div>
   <div class="text-center">
     <input type = "button" class="btn btn-primary mr-1" value = "telecharger pdf"  (click) = "captureScreen()"/>
-      <input class="btn btn-primary mr-1" type="submit" value = "confirmer" (click)="suivant()"/>
-      <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-      <button class="btn btn-secondary"  (click)="Next()">next</button>
+      <input class="btn btn-success mr-1" type="submit" value = "confirmer" (click)="suivant()"/>
+      <button class="btn btn-danger" type="reset" (click)="onReset()">Cancel</button>
   </div>

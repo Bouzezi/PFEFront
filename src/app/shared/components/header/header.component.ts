@@ -23,9 +23,12 @@ export class HeaderComponent implements OnInit {
       );
     }, 300);
   }
+
   logout(){
     this.jwt_service.logout();
     this.router.navigate(['/sign-in']);
   }
-
+  changePassword(){
+    this.router.navigateByUrl('/dashboard/change-password');
+  }
 }

@@ -8,7 +8,7 @@
    <td>
       <div class="right">
    <h5  lang="ar" dir="rtl">الجمهورية التونسية</h5>
-   <label >  وزارة التنمية و الإستثمار و التعاون الدولي   </label>
+   <h5 lang="ar" dir="rtl">وزارة التنمية و الإستثمار و التعاون الدولي   </h5>
    <h5 lang="ar" dir="rtl">المعهد الوطني للإحصاء</h5>
       </div>
   </td>
@@ -191,8 +191,9 @@
   </div>
   </div>
   <div class="text-center">
-    <button  class="btn btn-primary mr-1"   (click) = "download()">telecharger pdf</button>
+    <button  class="btn btn-warning mr-1"   (click) = "download()">telecharger pdf</button>
+    <button class="btn btn-primary"  (click)="precedent()"> precedent</button>
       <button class="btn btn-primary mr-1"  (click)="suivant()">Suivant</button>
-      <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+      <button class="btn btn-warning" type="reset" (click)="onReset()">Cancel</button>
     
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 
+
 @Component({
   selector: 'app-choisir-dossier',
   templateUrl: './choisir-dossier.component.html',
@@ -20,6 +21,7 @@ export class ChoseDossierComponent implements OnInit {
   typeFormation(){
     this.Myservice.typeVisite="formation";
     this.Myservice.id_dossier = null;
+
   }
 
   

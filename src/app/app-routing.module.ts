@@ -19,7 +19,9 @@ import { ChoseDossierComponent } from './modules/choisir-dossier/choisir-dossier
 import { UploadFilesComponent } from './modules/upload-files/upload-files.component';
 import { StatistiqueComponent } from './modules/statistique/statistique.component';
 import { ListOrganismeComponent } from './modules/list-organisme/list-organisme.component';
-import { ChangePasswordComponent } from './shared/components/change-password/change-password.component';
+import { AccueilComponent } from './modules/accueil/accueil.component';
+import { ChangePasswordComponent } from './modules/change-password/change-password.component';
+import { AuthGuard } from './modules/auth.guard';
 
 
 const routes: Routes = [{
@@ -27,27 +29,29 @@ const routes: Routes = [{
     path: 'dashboard',
   component: DefaultComponent,
   children: [
-    {path: 'dossiervisite',component: DashboardComponent},
-    {path: 'note',component: NotemissionComponent},
-    {path: 'fiche',component: FicheRenseignementComponent},
-    {path: 'posts',component: PostsComponent},
-    {path: 'borderau',component:BorderouComponent},
-    {path: 'rappel-rapport',component:RappelRapportComponent},
-    {path: 'liste-dossierVisite',component:ListeDossiersComponent},
-    {path: 'liste-cadre',component:ListeCadreComponent},
-    {path: 'ajoutecadre',component:AjoutecadreComponent},
-    {path: 'table-suivi',component:TableauSuiviComponent},
-    {path: 'choisir-dossier',component:ChoseDossierComponent},
-    {path: 'uploadFiles',component:UploadFilesComponent},
-    {path: 'statistique',component:StatistiqueComponent},
-    {path: 'list-organisme',component:ListOrganismeComponent}
+    {path: 'dossiervisite',component: DashboardComponent, canActivate : [AuthGuard] },
+    {path: 'note',component: NotemissionComponent, canActivate : [AuthGuard] },
+    {path: 'fiche',component: FicheRenseignementComponent, canActivate : [AuthGuard] },
+    {path: 'posts',component: PostsComponent, canActivate : [AuthGuard] },
+    {path: 'borderau',component:BorderouComponent, canActivate : [AuthGuard] },
+    {path: 'rappel-rapport',component:RappelRapportComponent, canActivate : [AuthGuard] },
+    {path: 'liste-dossierVisite',component:ListeDossiersComponent, canActivate : [AuthGuard] },
+    {path: 'liste-cadre',component:ListeCadreComponent, canActivate : [AuthGuard] },
+    {path: 'ajoutecadre',component:AjoutecadreComponent, canActivate : [AuthGuard] },
+    {path: 'table-suivi',component:TableauSuiviComponent, canActivate : [AuthGuard] },
+    {path: 'choisir-dossier',component:ChoseDossierComponent, canActivate : [AuthGuard] },
+    {path: 'uploadFiles',component:UploadFilesComponent, canActivate : [AuthGuard] },
+    {path: 'statistique',component:StatistiqueComponent, canActivate : [AuthGuard] },
+    {path: 'list-organisme',component:ListOrganismeComponent, canActivate : [AuthGuard] },
+    {path: 'change-password',component:ChangePasswordComponent, canActivate : [AuthGuard] },
+    {path: 'accueil',component:AccueilComponent, canActivate : [AuthGuard] }
   ]
 },
 
 { path: 'sign-in', component: SignInComponent},
 { path: '', component: SignInComponent},
 { path: 'sign-up', component:SignUpComponent},
-{ path: 'changePassword', component:ChangePasswordComponent}
+
 ];
 
 

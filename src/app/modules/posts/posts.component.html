@@ -62,8 +62,10 @@
         
 </div>
 <div class="text-center">
-    <button class="btn btn-primary mr-1" (click)="download()">telecharger PDf</button>
-    <button class="btn btn-primary mr-1" (click)="suivant()">Suivant</button>
-    <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+    <button class="btn btn-succsess mr-1" (click)="download()">telecharger PDf</button>
+    <button class="btn btn-primary"  (click)="precedent()"> precedent</button>
+    <button class="btn btn-primary mr-1" [hidden]="typeV1" (click)="suivant()">Suivant</button>
+    <button class="btn btn-primary mr-1" [hidden]="typeV2" (click)="terminer()">Terminer</button>
+    <button class="btn btn-warning" type="reset" (click)="onReset()">Cancel</button>
   
 </div>

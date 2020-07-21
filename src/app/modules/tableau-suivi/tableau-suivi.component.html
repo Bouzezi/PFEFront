@@ -1,6 +1,6 @@
 <div class='card'>
     <a style="cursor: pointer;" (click)="exportexcel()">
-        <button>Télécharger</button>
+        <button class="btn btn-primary">Télécharger</button>
       </a>
     <div class='card-header'>
         {{pageTitle}}
@@ -9,7 +9,7 @@
         
         <div class="row">
             <div class="col-3">
-                <input [(ngModel)]="listFilter" type="text" class="form-control"   id="filterInput" placeholder="Type to filter">
+                <input [(ngModel)]="listFilter" type="text" class="form-control"   id="filterInput" placeholder="Typer pour filter">
             </div>
             <div class="col">
                 <div *ngIf='listFilter' class="form-text text-muted">Filtered by: {{listFilter}}</div>
@@ -37,7 +37,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor='let suivi of tab'>
+                <tr *ngFor='let suivi of filteredSuivi  | slice:startindex:endindex'>
                     <td>{{ suivi.date_envoie_rapport }}</td>
                     <td>{{ suivi.date_envoi_documents }}</td>
                     <td>{{ suivi.type_visite }}</td>
@@ -59,6 +59,24 @@
         </div>
     </div>
     <div class="card-footer text-muted text-right">
-        <small>Powered by Angular</small>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link"  aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li *ngFor="let i of getarray(nb); let in = index" class="page-item">
+                  <button  class="page-link" (click)="updateindex(in)">{{in+1}}</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link"   aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+              
+            </ul>
+          </nav>
+       
     </div>
 </div>

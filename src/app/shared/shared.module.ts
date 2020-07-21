@@ -12,7 +12,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 @NgModule({
@@ -21,8 +20,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     FooterComponent,
     SidebarComponent,
     SignUpComponent,
-    SignInComponent,
-    ChangePasswordComponent,
+    SignInComponent
     
     
     

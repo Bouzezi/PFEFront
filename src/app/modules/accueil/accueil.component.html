@@ -1,0 +1,87 @@
+<div class="card cards">
+    <div class="card-header card-header-primary cardHeader">
+        <h4 class="card-title ">Statistique INS</h4>
+        <p class="card-category"> </p>
+    </div>
+    <div class='card-body'>
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i  class="material-icons fa fa-folder">folder</i>
+                                </div>
+                                <p class="card-category" >Dossier de visite total</p>
+                                <h3 class="card-title" >
+                                    {{nbrDossier}}  
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons fa fa-folder">folder</i>
+                                </div>
+                                <p class="card-category">Dossier de visite mission</p>
+                                <h3 class="card-title" >{{nbrDossierMission}}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons fa fa-folder">folder</i>
+                                </div>
+                                <p class="card-category">Dossier de visite formation</p>
+                                <h3 class="card-title" >{{nbrDossierFormation}}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons fa fa-user">info_outline</i>
+                                </div>
+                                <p class="card-category">Cadre INS</p>
+                                <h3 class="card-title" >{{nbrCadre}}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divChart">
+                        <canvas id="doughnut-chart" width="20"
+                        height="20"></canvas>
+                    </div>  
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+

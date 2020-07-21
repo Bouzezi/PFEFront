@@ -1,18 +1,18 @@
 
     <div class='card'>
-        <div class='card-header'>
-            
-            {{pageTitle}}
+        <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des organismes</h4>
+            <p class="card-category"></p>
         </div>
         <div class='card-body' >
             <div class="row">
                 <div class="col-3">   
             
-             <input [(ngModel)]="listFilter" type="text"  class="form-control" placeholder="Type to filter">
+             <input [(ngModel)]="listFilter" type="text"  class="form-control" placeholder="Typer pour filter">
             
             </div>
                 <div class="col">
-                    <button class="btn btn-primary" (click)="openDialog()">ajouter un organisme</button>
+                    <button class="btn btn-danger" (click)="openDialog()">ajouter un organisme</button>
                 </div>
             </div>
             <div class="table table-hover">
@@ -30,8 +30,8 @@
                         <td>{{ organisme.libelle_org }}</td>
                         
                         <td > 
-                            <button  class="btn btn-primary" (click)="openDialog()"  (click)="edit($event)" [value]="organisme.id" >
-                               Edit </button> 
+                            <button  class="btn btn-danger" (click)="openDialog()"  (click)="edit($event)" [value]="organisme.id" >
+                               MODIFIER </button> 
                         </td>
                     </tr>
                     </tbody>

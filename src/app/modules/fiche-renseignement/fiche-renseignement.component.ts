@@ -5,6 +5,7 @@ import { Dossier } from 'src/app/entities/dossier';
 import { DashboardService } from '../dashboard.service';
 import * as moment from 'moment';
 import { Fiche } from 'src/app/entities/fiche_renseignement';
+
 @Component({
   selector: 'app-fiche-renseignement',
   templateUrl: './fiche-renseignement.component.html',
@@ -112,6 +113,7 @@ export class FicheRenseignementComponent implements OnInit {
         error => console.log(error);
         this.getFiche();
       });
+      
     }
     editFiche(){
       console.log(this.fiche);
@@ -137,7 +139,9 @@ export class FicheRenseignementComponent implements OnInit {
     suivant(){
       this.router.navigateByUrl('/dashboard/rappel-rapport');
     }
-
+    precedent(){
+      this.router.navigateByUrl('/dashboard/note');
+    }
 
     download(){
       const options= {
